@@ -5,9 +5,8 @@ import {Login} from "./Login";
 import {Register} from "./Register";
 import {Employees} from "./Employees";
 import {Suppliers} from "./Suppliers";
-import {Test} from "./Test";
+import {WeeklyReports} from "./report"; 
 import logo from "./logob.png";
-import report from './report';
 
 
 class App extends Component {
@@ -32,7 +31,7 @@ class App extends Component {
             width:"100%",
             height:"100vh",
            }} className="App">
-        
+         
           {!this.state.isLoggedin?
           <Switch>
           <Redirect to="/login"/>
@@ -40,7 +39,7 @@ class App extends Component {
             <div style={{display:"flex", position:"fixed", width:"calc(100% - 40px)", justifyContent:"space-between", padding:"20px", color:"white", backgroundColor:"#c02906", marginTop:"155px"}}>
               <NavLink style={{color:"white", textDecoration:"none", cursor:"pointer", fontWeight:"bold"}} to="/employees">Employees</NavLink>
               <NavLink style={{color:"white", textDecoration:"none", cursor:"pointer", fontWeight:"bold"}} to="/suppliers">Suppliers</NavLink>
-              <NavLink style={{color:"white", textDecoration:"none", cursor:"pointer", fontWeight:"bold"}} to="/report">Weekly Reports</NavLink>
+              <NavLink style={{color:"white", textDecoration:"none", cursor:"pointer", fontWeight:"bold"}} to="/report">WeeklyReports</NavLink>
               <div style={{color:"white", textDecoration:"none", cursor:"pointer", fontWeight:"bold"}} onClick={()=>{this.setState({isLoggedin:false}); localStorage.clear()}}>Logout</div>
             </div>
           }
@@ -49,7 +48,7 @@ class App extends Component {
             <Route exact path="/register" component={Register}/>
             <Route exact path="/employees" render={()=><Employees owner={this.state.owner}/>}/>
             <Route exact path="/suppliers" render={()=><Suppliers owner={this.state.owner}/>}/>
-            <Route exact path="/report" component={report}/>
+            <Route exact path="/report" render={()=><WeeklyReports owner={this.state.owner}/>}/>
           </Switch>
           </div>
       </React.Fragment>
